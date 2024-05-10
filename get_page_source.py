@@ -66,7 +66,7 @@ def get_page_source(driver: object) -> str:
     return page_source
 
 
-# we srtart the appium session and then have a loop that waits for keybopard input to get the page source
+# we start the appium session and then have a loop that waits for keybopard input to get the page source
 # this allows us to get the page source from the desired screen of the app
 def main():
     driver = start_appium_session()
