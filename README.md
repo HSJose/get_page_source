@@ -86,8 +86,8 @@ capabilities = {
     'platformName': 'vizio',
     'appium:automationName': 'vizio',
     'appium:deviceName': 'VizioTV',
+    'appium:app': 'https://your_app_url'
     'appium:udid': udid,
-    'headspin:app.id': app_id
 }
 ```
 
@@ -97,9 +97,9 @@ capabilities = {
 capabilities = {
     'platformName': 'roku',
     'appium:automationName': 'roku',
-    'appium:deviceName': 'RokuTV',
+    'appium:deviceName': 'roku',
+    'headspin:app.id': app_id,
     'appium:udid': udid,
-    'headspin:app.id': app_id
 }
 ```
 

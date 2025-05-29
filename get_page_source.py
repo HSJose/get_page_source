@@ -21,13 +21,14 @@ capabilities = {
     'appium:deviceName': 'SamsungTV',
     'appium:automationName': 'tizentv',
     'appium:udid': udid,
-    'headspin:app.id': app_id,
-    'headspin:retryNewSessionFailure': False
+    'headspin:app.id': app_id
 }
 
 # convert capabilities to AppiumOptions
 appium_options = AppiumOptions().load_capabilities(capabilities)
 appium_options.set_capability('appium:newCommandTimeout', 300)
+appium_options.set_capability('headspin:controlLock', True)
+appium_options.set_capability('headspin:retryNewSessionFailure', False)
 
 def start_appium_session() -> object:
     '''
