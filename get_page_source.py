@@ -1,4 +1,4 @@
-# Script to get page source of a Debuggable roku app/channel
+# Script to get page source of a Debuggable app/channel
 from appium import webdriver
 from appium.options.common import AppiumOptions
 from dotenv import load_dotenv
@@ -10,24 +10,24 @@ from rich import print
 load_dotenv()
 api_key = getenv('HEADSPIN_API_TOKEN')
 app_id = getenv('APP_ID')
+udid = getenv('UDID')
 
 # Appium Load Balancer Endpoint
 alb_wd = f'https://appium-dev.headspin.io:443/v0/{api_key}/wd/hub'
 
 # Set desired capabilities
-# hero grid app needs to be uploaded to the org
 capabilities = {
-    "platformName": "roku",
-    "appium:automationName": "roku",
-    "appium:deviceName": "roku",
-    "headspin:app.id": app_id,
-    "headspin:newCommandTimeout": 300,
-    "headspin:controlLock": True,
-    "headspin:selector": {'device_skus':'roku*'}
+    'platformName': 'tizentv',
+    'appium:deviceName': 'SamsungTV',
+    'appium:automationName': 'tizentv',
+    'appium:udid': udid,
+    'headspin:app.id': app_id,
+    'headspin:retryNewSessionFailure': False
 }
 
 # convert capabilities to AppiumOptions
-roku_options = AppiumOptions().load_capabilities(capabilities)
+appium_options = AppiumOptions().load_capabilities(capabilities)
+appium_options.set_capability('appium:newCommandTimeout', 300)
 
 def start_appium_session() -> object:
     '''
@@ -37,7 +37,7 @@ def start_appium_session() -> object:
     try:
         driver = webdriver.Remote(
             command_executor=alb_wd,
-            options=roku_options
+            options=appium_options
         )
 
         session_id = driver.session_id
