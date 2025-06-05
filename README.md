@@ -75,6 +75,7 @@ capabilities = {
     'appium:automationName': 'webos',
     'appium:deviceName': 'LGTV',
     'appium:udid': udid,
+    'appium:appId': 'com.your.app.id',
     'headspin:app.id': app_id
 }
 ```
